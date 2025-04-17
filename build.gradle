@@ -27,6 +27,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.34'
 	testCompileOnly 'org.projectlombok:lombok:1.18.34'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+	implementation("software.amazon.awssdk:aws-sdk-java:2.31.23")
+	implementation("software.amazon.awssdk:auth:2.31.23")
 }
 
 tasks.named('test') {
