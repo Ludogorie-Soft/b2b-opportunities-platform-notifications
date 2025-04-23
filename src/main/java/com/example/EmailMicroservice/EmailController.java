@@ -1,5 +1,6 @@
 package com.example.EmailMicroservice;
 
+import com.example.EmailMicroservice.Service.Interface.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

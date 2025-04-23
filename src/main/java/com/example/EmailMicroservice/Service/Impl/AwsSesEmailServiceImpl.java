@@ -1,7 +1,11 @@
-package com.example.EmailMicroservice;
+package com.example.EmailMicroservice.Service.Impl;
 
+import com.example.EmailMicroservice.EmailRequest;
+import com.example.EmailMicroservice.ServerErrorException;
+import com.example.EmailMicroservice.Service.Interface.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.ses.SesClient;
 import software.amazon.awssdk.services.ses.model.Body;
@@ -13,13 +17,15 @@ import software.amazon.awssdk.services.ses.model.SesException;
 
 @Service
 @RequiredArgsConstructor
-public class EmailService {
+@Profile("prod")
+public class AwsSesEmailServiceImpl implements EmailService {
 
     @Value("${aws.ses.sender}")
     private String fromMail;
 
     private final SesClient sesClient;
 
+    @Override
     public void sendEmail(EmailRequest emailRequest) {
         try {
             Destination destination = Destination.builder()
